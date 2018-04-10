@@ -1,3 +1,4 @@
+#include "../include/settings.h"
 #include "../include/spider.h"
 
 //init point
@@ -44,11 +45,11 @@ Body *initBody(GLint CepCenterX, GLint CepCenterY, GLint CepRad, GLint AbsCenter
 //init spider
 Spider *initSpider(){
 	Spider *boris=(Spider *)malloc(sizeof(Spider));
-	boris->Body=initBody();
-	boris->Pair1=initLegPair();
-	boris->Pair2=initLegPair();
-	boris->Pair3=initLegPair();
-	boris->Pair4=initLegPair();
+	boris->corpse=initBody(CephCenterInitX, CephCenterInitY, CephRAD,AbsCenterInitX, AbsCenterInitY, AbsRAD);
+	//boris->Pair1=initLegPair();
+	//boris->Pair2=initLegPair();
+	//boris->Pair3=initLegPair();
+	//boris->Pair4=initLegPair();
 	return boris;
 }
 

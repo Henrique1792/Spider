@@ -22,14 +22,17 @@
 #define innerLegAngle (M_P1*45)/180
 #define outterLegAngle (M_P1*60)/180
 
+#define AbsRAD 4
+#define CephRAD 3
 
 
-/********/
 
 /****Initial Point****/
 #define CephCenterInitX VIEWPORT_X/2
 #define CephCenterInitY VIEWPORT_Y/2
 
+#define AbsCenterInitX (VIEWPORT_X/2)
+#define AbsCenterInitY (VIEWPORT_Y)+(AbsRAD+CephRAD)
 
 typedef struct Point{
 	GLint x,y;
@@ -57,5 +60,13 @@ typedef struct Spider{
 	LegPair *Pair1,*Pair3;
 	LegPair *Pair2,*Pair4;
 }Spider;
+
+
+
+/****Globals****/
+Spider *spd;
+
+
+
 
 #endif

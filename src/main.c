@@ -1,4 +1,6 @@
 #include "../include/settings.h"
+#include "../include/eventscene.h"
+#include "../include/spider.h"
 
 
 
@@ -7,6 +9,7 @@
 void init(int SCREEN_SIZEX, int SCREEN_SIZEY){ 
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB); glutInitWindowSize(VIEWPORT_X, VIEWPORT_Y);
 	glutInitWindowPosition((SCREEN_SIZEX-VIEWPORT_X)/2, (SCREEN_SIZEY-VIEWPORT_Y)/2);
+
 	glutCreateWindow("Ex1");
 
 	glMatrixMode(GL_PROJECTION);
@@ -21,9 +24,11 @@ void init(int SCREEN_SIZEX, int SCREEN_SIZEY){
 
 
 int main(int argc, char *argv[]){
+	spd=initSpider();
 	glutInit(&argc,argv);
-
-	init(int(*argv[1]), int(*argv[2]));
+	
+	glutDisplayFunc(display);
+	init(*argv[1], *argv[2]);
 
 	glutMainLoop();
 }

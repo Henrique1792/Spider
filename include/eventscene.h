@@ -7,5 +7,9 @@ void reshape();
 void cleanScreen();
 
 
+/****Draws****/
+
+void drawSpider();
+
 
 #endif
