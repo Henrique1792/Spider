@@ -11,6 +11,8 @@
 #include <GL/glut.h>
 #endif
 
+#define SCREEN_SIZEX 1366
+#define SCREEN_SIZEY 768 
 #define VIEWPORT_X 800
 #define VIEWPORT_Y 600
 #define ORTHO_X 400
@@ -22,8 +24,8 @@
 #define innerLegAngle (M_P1*45)/180
 #define outterLegAngle (M_P1*60)/180
 
-#define AbsRAD 4
-#define CephRAD 3
+#define AbsRAD 40
+#define CephRAD 30
 
 
 
@@ -32,7 +34,7 @@
 #define CephCenterInitY VIEWPORT_Y/2
 
 #define AbsCenterInitX (VIEWPORT_X/2)
-#define AbsCenterInitY (VIEWPORT_Y)+(AbsRAD+CephRAD)
+#define AbsCenterInitY (VIEWPORT_Y/2)-(AbsRAD+CephRAD)
 
 typedef struct Point{
 	GLint x,y;
@@ -43,8 +45,8 @@ typedef struct Leg{
 	Point *p1,*p2;
 	//Second leg section.
 	Point *p3;
-
 }Leg;
+
 typedef struct LegPair{
 	Leg *left, *right;
 	
@@ -65,8 +67,6 @@ typedef struct Spider{
 
 /****Globals****/
 Spider *spd;
-
-
 
 
 #endif

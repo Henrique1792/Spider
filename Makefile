@@ -8,7 +8,7 @@ SRCS=$(wildcard $(SRC_DIR)/*.c)
 OBJS=$(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o,$(SRCS))
 LIBS = -lGL -lglut -lGLU -lm -g
 BUILD=build/*
-
+.PHONY: all
 
 
 
