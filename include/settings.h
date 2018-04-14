@@ -21,8 +21,8 @@
 /****Defines****/
 
 /****Angle and Legs Disposition****/
-#define innerLegAngle (M_P1*45)/180
-#define outterLegAngle (M_P1*60)/180
+#define innerLegAngle (M_PI*45)/180
+#define outterLegAngle (M_PI*60)/180
 
 #define AbsRAD 40
 #define CephRAD 30

@@ -63,8 +63,15 @@ void reshape(int w, int h){
 
 void drawSpider(){
 	//DrawBody
+	glBegin(GL_POINTS);
+		glVertex2f(spd->corpse->CephCenter->x, spd->corpse->CephCenter->y);
+		glVertex2f(spd->corpse->AbsCenter->x, spd->corpse->AbsCenter->y);
+	glEnd();
+	//draw Cephalotorax
 	DrawCircle(spd->corpse->CephCenter->x,spd->corpse->CephCenter->y, CephRAD, 1000);
+	//Draw abdomen
 	DrawCircle(spd->corpse->AbsCenter->x,spd->corpse->AbsCenter->y, AbsRAD, 1000);
+	glColor3f(1.0,0.0,0.0);
 	//DrawLegs
 	
 	glutPostRedisplay();
