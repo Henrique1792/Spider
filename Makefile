@@ -1,25 +1,27 @@
-CC=gcc
+# using gcc compiler
+CC = gcc
 
-SRC_DIR=src
-OBJ_DIR=build
+# output path and filename
+BINARY = ./build/output
 
+# includes directory
+INCLUDES = ./includes
 
-SRCS=$(wildcard $(SRC_DIR)/*.c)
-OBJS=$(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o,$(SRCS))
-LIBS = -lGL -lglut -lGLU -lm -g
-BUILD=build/*
-.PHONY: all
+# libraries and flags
+LIBS = -lglut -lGL -lGLU -lm
+# FLAGS = -Wall -O0 -g -Wextra -pthread
+FLAGS = -O0 -g -pthread
 
+all: compile run clean
 
+compile:
+	$(CC) -o $(BINARY) -I$(INCLUDES) $(SRC) $(LIBS) $(FLAGS)
 
-all: $(OBJS)
-	$(CC)  -o build/boris  $^ $(LIBS) && ctags -R *
+test:
+	run clean debug
 
-
-$(OBJ_DIR)/%.o:
-	$(CC) -c $(patsubst $(OBJ_DIR)/%.o, $(SRC_DIR)/%.c, $@) -o $@
 run:
-	./build/boris 1366 768
+	$(BINARY)
 
 clean:
-	rm $(BUILD) tags
+rm *.o

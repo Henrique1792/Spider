@@ -1,34 +1,31 @@
-#include "../include/settings.h"
-#include "../include/eventscene.h"
-#include "../include/spider.h"
+#include <GL/gl.h>
+#include <GL/glut.h>
+#include <stdio.h>
+#include "../include/scene.h"
 
+int main (int argc, char *argv[])
+{
+    //GLUT Init
+    glutInit(&argc, argv);
+    glutInitDisplayMode(GLUT_SINGLE | GLUT_RGBA | GLUT_DEPTH);
+    
+    //Window
+    glutInitWindowSize(WIDTH, HEIGHT); // Defines the size in pixels of the window
+    glutCreateWindow("Spider"); // Defines the window title
+    
+    //Rendering
+    glutDisplayFunc(drawLoop);
+    glutReshapeFunc(reshape); 
+    glutIdleFunc(drawLoop);
 
+    //Events
+    glutMouseFunc(on_mouseClick);
 
+    glMatrixMode(GL_PROJECTION); // Load matrix mode
+    glViewport(0, 0, WIDTH, HEIGHT); // Set viewport size
+    glOrtho(-WIDTH/2, WIDTH/2, -HEIGHT/2, HEIGHT/2, -1, 1); // Defines the orthogonal plane to build the scene in
 
+    glutMainLoop();
 
-void init(){ 
-	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
-	glutInitWindowSize(VIEWPORT_X, VIEWPORT_Y);
-	glutInitWindowPosition((SCREEN_SIZEX-VIEWPORT_X)/2, (SCREEN_SIZEY-VIEWPORT_Y)/2);
-	glutCreateWindow("Spider");
-
-	glMatrixMode(GL_PROJECTION);
-	glViewport(0,0,VIEWPORT_X,VIEWPORT_Y);
-	glLoadIdentity();
-	gluOrtho2D(0,VIEWPORT_X, 0,VIEWPORT_Y);
-	glMatrixMode(GL_MODELVIEW);
-	glLoadIdentity();
-}
-
-
-
-
-int main(int argc, char *argv[]){
-	spd=initSpider();
-	glutInit(&argc,argv);
-	
-	init();
-	glutDisplayFunc(display);
-
-	glutMainLoop();
+    return EXIT_SUCCESS;
 }
