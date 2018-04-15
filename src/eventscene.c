@@ -73,6 +73,6 @@ void drawSpider(){
 	DrawCircle(spd->corpse->AbsCenter->x,spd->corpse->AbsCenter->y, AbsRAD, 1000);
 	glColor3f(1.0,0.0,0.0);
 	//DrawLegs
-	
+	DrawLeg(spd->Pair1->left);
 	glutPostRedisplay();
 }

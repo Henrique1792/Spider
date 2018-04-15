@@ -21,5 +21,7 @@ $(OBJ_DIR)/%.o:
 run:
 	./build/boris 1366 768
 
+debug:
+	valgrind ./build/boris
 clean:
 	rm $(BUILD) tags

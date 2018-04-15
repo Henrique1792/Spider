@@ -26,6 +26,7 @@
 
 #define AbsRAD 40
 #define CephRAD 30
+#define LegSize 10
 
 
 
