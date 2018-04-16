@@ -5,7 +5,9 @@ CC = gcc
 BINARY = ./build/output
 
 # includes directory
-INCLUDES = ./includes
+INCLUDE = ./include
+
+SRC = ./src/main.c ./src/scene.c
 
 # libraries and flags
 LIBS = -lglut -lGL -lGLU -lm
@@ -15,7 +17,7 @@ FLAGS = -O0 -g -pthread
 all: compile run clean
 
 compile:
-	$(CC) -o $(BINARY) -I$(INCLUDES) $(SRC) $(LIBS) $(FLAGS)
+	$(CC) -o $(BINARY) -I$(INCLUDE) $(SRC) $(LIBS) $(FLAGS)
 
 test:
 	run clean debug
@@ -24,4 +26,4 @@ run:
 	$(BINARY)
 
 clean:
-rm *.o
+	rm *.o

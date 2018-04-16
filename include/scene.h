@@ -1,13 +1,11 @@
 #ifndef SCENE_H
 #define SCENE_H
 
-#define WIDTH 800
-#define HEIGHT 450
+#define WIDTH 500
+#define HEIGHT 500
 
-void drawLoop();
-void drawScene();
-void move();
-void reshape (int width, int height) ;
-void on_mouseClick(int button, int click_state, int x_mouse_position, int y_mouse_position);
-void update(int value);
+void draw();
+void initialize();
+void reshape(int width, int height);
+
 #endif
