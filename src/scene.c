@@ -5,9 +5,8 @@
 void initialize() {
 	glClearColor(1.0, 1.0, 1.0, 1.0);
 	glMatrixMode(GL_PROJECTION);
-    gluOrtho2D(-WIDTH, WIDTH, -HEIGHT, HEIGHT);
+    gluOrtho2D(-WIDTH / 2.0, WIDTH / 2.0, -HEIGHT / 2.0, HEIGHT / 2.0);
 	glViewport(0, 0, WIDTH, HEIGHT);
-    glEnable(GL_POINT_SMOOTH);
 }
 
 void reshape (int width, int height) 
@@ -22,6 +21,9 @@ void draw()
 {    
     // Repaint screen
     glClear(GL_COLOR_BUFFER_BIT);
+
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
 
     glColor3f(1.0, 0.0, 0.0);
 	glBegin(GL_LINES);
