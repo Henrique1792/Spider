@@ -109,7 +109,6 @@ void draw()
 	draw_leg(spider->third_pair->left);
 	draw_leg(spider->third_pair->right);
 
-	glColor3f(1.0,1.0,0.0);
 	draw_leg(spider->fourth_pair->left);
 	draw_leg(spider->fourth_pair->right);
 
