@@ -10,7 +10,7 @@ INCLUDE = ./include
 SRC = ./src/main.c ./src/scene.c ./src/spider.c
 
 # Libraries 
-LIBS = -lglut -lGL -lGLU -lm
+LIBS = -framework GLUT -framework OpenGL
 
 # Flags
 FLAGS = -Wall -O0 -g -Wextra -pthread
