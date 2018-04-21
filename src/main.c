@@ -1,34 +1,27 @@
-#include "../include/settings.h"
-#include "../include/eventscene.h"
+#include <GL/gl.h>
+#include <GL/glut.h>
+#include <stdio.h>
+#include "../include/scene.h"
 #include "../include/spider.h"
 
+int main (int argc, char *argv[])
+{
+    spider = init_spider();
 
+    //GLUT Init
+    glutInit(&argc, argv);
+    glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
+    
+    //Initialize
+    initialize();
 
+    //Rendering
+    glutDisplayFunc(draw);
+    glutReshapeFunc(reshape); 
+    
+    glutMainLoop();
 
+    free_spider(spider);
 
-void init(){ 
-	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
-	glutInitWindowSize(VIEWPORT_X, VIEWPORT_Y);
-	glutInitWindowPosition((SCREEN_SIZEX-VIEWPORT_X)/2, (SCREEN_SIZEY-VIEWPORT_Y)/2);
-	glutCreateWindow("Spider");
-
-	glMatrixMode(GL_PROJECTION);
-	glViewport(0,0,VIEWPORT_X,VIEWPORT_Y);
-	glLoadIdentity();
-	gluOrtho2D(0,VIEWPORT_X, 0,VIEWPORT_Y);
-	glMatrixMode(GL_MODELVIEW);
-	glLoadIdentity();
-}
-
-
-
-
-int main(int argc, char *argv[]){
-	spd=initSpider();
-	glutInit(&argc,argv);
-	
-	init();
-	glutDisplayFunc(display);
-
-	glutMainLoop();
+    return EXIT_SUCCESS;
 }
