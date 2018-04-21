@@ -1,29 +1,27 @@
-# using gcc compiler
+# Using gcc compiler
 CC = gcc
 
-# output path and filename
+# Output path and filename
 BINARY = ./build/output
 
-# includes directory
+# Includes directory
 INCLUDE = ./include
 
-SRC = ./src/main.c ./src/scene.c
+SRC = ./src/main.c ./src/scene.c ./src/spider.c
 
-# libraries and flags
+# Libraries 
 LIBS = -lglut -lGL -lGLU -lm
-# FLAGS = -Wall -O0 -g -Wextra -pthread
-FLAGS = -O0 -g -pthread
+
+# Flags
+FLAGS = -Wall -O0 -g -Wextra -pthread
 
 all: compile run clean
 
 compile:
 	$(CC) -o $(BINARY) -I$(INCLUDE) $(SRC) $(LIBS) $(FLAGS)
 
-test:
-	run clean debug
-
 run:
 	$(BINARY)
 
 clean:
-	rm *.o
+	rm ./build/output
