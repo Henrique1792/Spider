@@ -8,16 +8,12 @@ int main (int argc, char *argv[])
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
     
-    //Window
-    glutInitWindowSize(WIDTH, HEIGHT); // Defines the size in pixels of the window
-    glutCreateWindow("Spider"); // Defines the window title
-    
+    //Initialize
+    initialize();
+
     //Rendering
     glutDisplayFunc(draw);
     glutReshapeFunc(reshape); 
-
-    //Initialize
-    initialize();
     
     glutMainLoop();
 

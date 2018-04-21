@@ -1,8 +1,11 @@
 #ifndef SCENE_H
 #define SCENE_H
 
-#define WIDTH 500
-#define HEIGHT 500
+#define WIDTH 800
+#define HEIGHT 600
+
+#define VIEWPORT_X 400
+#define VIEWPORT_Y 300
 
 void draw();
 void initialize();
