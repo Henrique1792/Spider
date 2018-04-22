@@ -15,7 +15,7 @@ void draw();
 void initialize();
 void reshape(int width, int height);
 
-void draw_circle(float center_x, float center_y, float radius, int num_segments);
+void draw_circle(GLfloat center_x, GLfloat center_y, GLfloat radius, int num_segments);
 void draw_leg(LEG *leg);
 
 #endif

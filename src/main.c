@@ -30,5 +30,5 @@ int main (int argc, char *argv[])
 
     free_spider(spider);
 
-    return EXIT_SUCCESS;
+    return 0;
 }

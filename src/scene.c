@@ -46,19 +46,23 @@ void reshape(int width, int height)
 	}
 }
 
-void draw_circle(float center_x, float center_y, float radius, int num_segments)
+void draw_circle(GLfloat center_x, GLfloat center_y, GLfloat radius, int num_segments)
 { 
-	glBegin(GL_LINE_LOOP); 
-	for(int i = 0; i < num_segments; i++)
-    { 	
-        float theta = 2.0f * PI * (float)i / (float)num_segments; //get the current angle 
-		
-        float x = radius * cosf(theta); //calculate the x component 
-		float y = radius * sinf(theta); //calculate the y component 
 
-		glVertex2f(x + center_x, y + center_y); //output vertex
-	} 
-	glEnd(); 
+	int i;
+	//int lineAmount = 100; //num de triangulos
+
+	GLfloat twicePi = 2.0f * PI;
+
+	glBegin(GL_TRIANGLE_FAN);
+		glVertex2f(center_x, center_y); // centro do circulo
+		for(i = 0; i <= num_segments;i++) {
+			glVertex2f(
+					center_x + (radius * cosf(i *  twicePi / num_segments)),
+					center_y + (radius * sinf(i * twicePi / num_segments))
+			);
+		}
+	glEnd();
 }
 
 void draw_leg(LEG *leg)
@@ -90,8 +94,25 @@ void draw()
     glPointSize(10);
 
     glPushMatrix();
+	
+    //Legs
+    glColor3f(0.0,0.0,0.0);
+    glLineWidth(5);
+	draw_leg(spider->first_pair->left);
+	draw_leg(spider->first_pair->right);
 
-    //Body
+	draw_leg(spider->second_pair->left);
+	draw_leg(spider->second_pair->right);
+
+	draw_leg(spider->third_pair->left);
+	draw_leg(spider->third_pair->right);
+
+	draw_leg(spider->fourth_pair->left);
+	draw_leg(spider->fourth_pair->right);
+
+	glColor3f(0.0,0.0,0.0);
+
+	//Body
 	glBegin(GL_POINTS);
 		glVertex2f(spider->body->ceph_center[0], spider->body->ceph_center[1]);
 		glVertex2f(spider->body->abs_center[0], spider->body->abs_center[1]);
@@ -102,22 +123,6 @@ void draw()
 	
     //Abdomen
 	draw_circle(spider->body->abs_center[0], spider->body->abs_center[1], ABS_RAD, 1000);
-	
-    //Legs
-	glColor3f(1.0,0.0,0.0);
-	draw_leg(spider->first_pair->left);
-	draw_leg(spider->first_pair->right);
-
-	glColor3f(0.0,1.0,0.0);
-	draw_leg(spider->second_pair->left);
-	draw_leg(spider->second_pair->right);
-
-	glColor3f(0.0,0.0,1.0);
-	draw_leg(spider->third_pair->left);
-	draw_leg(spider->third_pair->right);
-
-	draw_leg(spider->fourth_pair->left);
-	draw_leg(spider->fourth_pair->right);
 
     glutPostRedisplay();
 

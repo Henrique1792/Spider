@@ -22,29 +22,37 @@ void set_body(SPIDER *spider, GLfloat ceph_center_x, GLfloat ceph_center_y, GLfl
     spider->body->abs_rad = abs_rad;
 }
 
-void set_leg(LEG *leg, GLfloat rad, GLfloat x, GLfloat y, int side)
+void set_leg(LEG *leg, GLfloat x1, GLfloat y1, GLfloat x2, GLfloat y2, GLfloat x3, GLfloat y3, int side)
 {
+
     GLfloat angle, new_x, new_y, dir_x, dir_y;
     
-    angle = dec_to_rad(rad);
-	new_x = x + get_cos(angle);
-    new_y = y + get_sin(angle);
-	dir_x = get_cos(angle);
-    dir_y = get_sin(angle);
+    //angle = dec_to_rad(rad);
+	//new_x = x + get_cos(angle);
+    //new_y = y + get_sin(angle);
+	//dir_x = get_cos(angle);
+    //dir_y = get_sin(angle);
 
-	leg->x[0] = new_x;
-    leg->y[0] = new_y;
+	leg->x[0] = x1;
+    leg->y[0] = y1;
+
 	if(side==1){
-		leg->x[1] = new_x -  LEG_SIZE;
+
+		/*leg->x[1] = new_x -  LEG_SIZE;
 		leg->y[1] = new_y +  LEG_SIZE;
 		leg->x[2] = new_x -  LEG_SIZE;
-		leg->y[2] = new_y +  2*LEG_SIZE;
+		leg->y[2] = new_y +  2*LEG_SIZE; */
+
+        leg->x[1] = x2;
+        leg->y[1] = y2;
+        leg->x[2] = x3;
+        leg->y[2] = y3;
 	}
 	else{
-			leg->x[1] = new_x + LEG_SIZE;
-			leg->y[1] = new_y + LEG_SIZE;
-			leg->x[2] = new_x + LEG_SIZE;
-			leg->y[2] = new_y + 2*LEG_SIZE;
+			leg->x[1] = x2;
+            leg->y[1] = y2;
+            leg->x[2] = x3;
+            leg->y[2] = y3;
 	}
 }
 void allocate_spider(SPIDER *spider)
@@ -79,17 +87,17 @@ SPIDER *init_spider()
     set_body(spider, CEPH_CENTER_INIT_X, CEPH_CENTER_INIT_Y, CEPH_RAD, ABS_CENTER_INIT_X, ABS_CENTER_INIT_Y, ABS_RAD);
 
 	//Legs
-    set_leg(spider->first_pair->left, 45, CEPH_CENTER_INIT_X, CEPH_CENTER_INIT_Y,0);
-    set_leg(spider->first_pair->right, 135, CEPH_CENTER_INIT_X, CEPH_CENTER_INIT_Y,1);
+    set_leg(spider->first_pair->left, CEPH_CENTER_INIT_X, CEPH_CENTER_INIT_Y, -90, 120, -150, 100, 0);
+    set_leg(spider->first_pair->right, CEPH_CENTER_INIT_X, CEPH_CENTER_INIT_Y, 90, 120, 150, 100, 1);
     
-    set_leg(spider->second_pair->left, 20, CEPH_CENTER_INIT_X, CEPH_CENTER_INIT_Y,0);
-    set_leg(spider->second_pair->right, 170, CEPH_CENTER_INIT_X, CEPH_CENTER_INIT_Y,1);
+    set_leg(spider->second_pair->left, CEPH_CENTER_INIT_X, CEPH_CENTER_INIT_Y, -120, 80, -180, 60, 0);
+    set_leg(spider->second_pair->right, CEPH_CENTER_INIT_X, CEPH_CENTER_INIT_Y, 120, 80, 180, 60, 1);
 
-    set_leg(spider->third_pair->left, 345, CEPH_CENTER_INIT_X, CEPH_CENTER_INIT_Y,0);
-    set_leg(spider->third_pair->right, 195, CEPH_CENTER_INIT_X, CEPH_CENTER_INIT_Y,1);
+    set_leg(spider->fourth_pair->left, CEPH_CENTER_INIT_X, CEPH_CENTER_INIT_Y, -100, -80, -100, -120, 0);
+    set_leg(spider->fourth_pair->right, CEPH_CENTER_INIT_X, CEPH_CENTER_INIT_Y, 100, -80, 100, -120, 1);
 	
-    set_leg(spider->fourth_pair->left, 300, CEPH_CENTER_INIT_X, CEPH_CENTER_INIT_Y,0);
-    set_leg(spider->fourth_pair->right, 240, CEPH_CENTER_INIT_X, CEPH_CENTER_INIT_Y,1);
+    set_leg(spider->third_pair->left, CEPH_CENTER_INIT_X, CEPH_CENTER_INIT_Y, -100, 20, -150, -10, 1);
+    set_leg(spider->third_pair->right, CEPH_CENTER_INIT_X, CEPH_CENTER_INIT_Y, 100, 20, 150, -10, 1);
 
 	return spider;
 }

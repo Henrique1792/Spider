@@ -49,7 +49,7 @@ SPIDER *init_spider();
 
 void set_body(SPIDER *spider, GLfloat ceph_center_x, GLfloat ceph_center_y, GLfloat ceph_rad, GLfloat abs_center_x, GLfloat abs_center_y, GLfloat abs_rad);
 
-void set_leg(LEG *leg, GLfloat rad, GLfloat x, GLfloat y,int side);
+void set_leg(LEG *leg, GLfloat x1, GLfloat y1, GLfloat x2, GLfloat y2, GLfloat x3, GLfloat y3, int side);
 
 void free_pair(PAIR *pair);
 
