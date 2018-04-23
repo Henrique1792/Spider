@@ -11,7 +11,7 @@ SRC = ./src/main.c ./src/scene.c ./src/spider.c
 
 # Libraries 
 LIBS = -framework GLUT -framework OpenGL
-
+LIBS_LINUX = -lGL -lGLU -lglut -lm
 # Flags
 FLAGS = -Wall -O0 -g -Wextra -pthread
 
@@ -20,7 +20,7 @@ FLAGS = -Wall -O0 -g -Wextra -pthread
 .PHONY: compile
 all: compile run clean
 compile:
-	$(CC) -o $(BINARY) -I$(INCLUDE) $(SRC) $(LIBS) $(FLAGS)
+	$(CC) -o $(BINARY) -I$(INCLUDE) $(SRC) $(LIBS_LINUX) $(FLAGS)
 	ctags -R *
 
 run:
@@ -29,4 +29,4 @@ run:
 debug:
 	valgrind ./build/boris
 clean:
-	rm ./build/output
+	rm ./build/output tags
