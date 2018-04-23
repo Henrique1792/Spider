@@ -99,6 +99,11 @@ SPIDER *init_spider()
     set_leg(spider->third_pair->left, CEPH_CENTER_INIT_X, CEPH_CENTER_INIT_Y, -100, 20, -150, -10, 1);
     set_leg(spider->third_pair->right, CEPH_CENTER_INIT_X, CEPH_CENTER_INIT_Y, 100, 20, 150, -10, 1);
 
+    spider->pos.x=CEPH_CENTER_INIT_X, spider->pos.y=CEPH_CENTER_INIT_Y;
+    spider->target.x=CEPH_CENTER_INIT_X, spider->target.y=CEPH_CENTER_INIT_Y;
+    spider->rotation=0;
+    spider->scale=0;
+
 	return spider;
 }
 

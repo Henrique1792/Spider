@@ -2,7 +2,7 @@
 #define SPIDER_H
 
 #include <math.h>
-
+#include "../include/vector.h"
 #define CEPH_RAD 30
 #define ABS_RAD 40
 #define LEG_SIZE 25
@@ -24,23 +24,25 @@
 
 typedef struct leg
 {
-    float x[3], y[3];
+	float x[3], y[3];
 }LEG;
 
 typedef struct pair
 {
-    LEG *left, *right;
+	LEG *left, *right;
 }PAIR;
 
 typedef struct body
 {
-    float ceph_center[2], abs_center[2], ceph_rad, abs_rad;
+	float ceph_center[2], abs_center[2], ceph_rad, abs_rad;
 }BODY;
 
 typedef struct spider
 {
-    BODY *body;
-    PAIR *first_pair, *second_pair, *third_pair, *fourth_pair;
+	vec2 pos, target;
+	GLfloat rotation, scale;
+	BODY *body;
+	PAIR *first_pair, *second_pair, *third_pair, *fourth_pair;
 }SPIDER;
 
 void allocate_spider(SPIDER *spider);
